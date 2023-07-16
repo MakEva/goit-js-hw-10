@@ -31,23 +31,3 @@ export function fetchCatByBreed(breedId) {
 
 
 
-
-
-// export function fetchBreeds() {
-//   return axios.get(BASE_URL)
-//     .then(response => response.data)
-//     .catch(error => {
-//       console.error("Error fetching breeds:", error);
-//       return [];
-//     });
-// }
-
-// export function fetchCatByBreed(breedId) {
-//   const url = `${CATS_URL}?breed_ids=${breedId}`;
-//   return axios.get(url)
-//     .then(response => response.data)
-//     .catch(error => {
-//       console.error("Error fetching cat by breed:", error);
-//       return null;
-//     });
-// }
