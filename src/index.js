@@ -22,9 +22,9 @@ fetchBreeds()
         refs.breedSelect.hidden = false;
     })
     .catch(error => {
-        refs.error.hidden = false;
         console.error(error);
         refs.error.hidden = false;
+        refs.loader.hidden = true;
     })
  
 
@@ -50,8 +50,10 @@ function onSelectedBreedId(breed) {
             refs.breedSelect.hidden = false;
         })
         .catch(error => {
-            refs.error.hidden = false;
             console.error(error);
+            refs.error.hidden = false;
+            refs.loader.hidden = true;
+            
         });
    
 };

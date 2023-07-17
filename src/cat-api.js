@@ -9,6 +9,7 @@ export function fetchBreeds() {
         .then(response => response.data)
         .catch(error => {
             refs.error.hidden = false;
+            refs.loader.hidden = true;
             console.error(error);
             return [];
         });
@@ -20,6 +21,7 @@ export function fetchCatByBreed(breedId) {
         .then(response => response.data)
         .catch(error => {
             refs.error.hidden = false;
+            refs.loader.hidden = true;
             console.error(error);
             return null;
         });
