@@ -2,7 +2,7 @@ import { fetchBreeds, fetchCatByBreed } from "./cat-api.js";
 import SlimSelect from 'slim-select'
 import "slim-select/dist/slimselect.css"
 
-const refs = {
+export const refs = {
     breedSelect: document.querySelector(".breed-select"),
     catInfoCard: document.querySelector(".cat-info"),
     loader: document.querySelector(".loader"),
@@ -25,6 +25,7 @@ fetchBreeds()
         console.error(error);
         refs.error.hidden = false;
         refs.loader.hidden = true;
+        refs.catInfoCard.innerHTML = "";
     })
  
 
@@ -48,12 +49,12 @@ function onSelectedBreedId(breed) {
             refs.catInfoCard.innerHTML = catCard;
             refs.loader.hidden = true;
             refs.breedSelect.hidden = false;
+            refs.error.hidden = true;
         })
         .catch(error => {
             console.error(error);
             refs.error.hidden = false;
             refs.loader.hidden = true;
-            
         });
    
 };

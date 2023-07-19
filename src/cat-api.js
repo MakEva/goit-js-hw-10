@@ -1,5 +1,6 @@
 import axios from "axios";
 axios.defaults.headers.common["x-api-key"] = "live_UivUqlx2I5jiOynNulnIZrh0LbDTBAuA9XAy8nLALoiXWspOtYaaJVxM2AfDwaHe";
+import { refs } from "./index";
 
 const BASE_URL = "https://api.thecatapi.com/v1/breeds"
 const CATS_URL = "https://api.thecatapi.com/v1/images/search";   
@@ -10,6 +11,8 @@ export function fetchBreeds() {
         .catch(error => {
             refs.error.hidden = false;
             refs.loader.hidden = true;
+            refs.breedSelect.hidden = true;
+            refs.catInfoCard.innerHTML = "";
             console.error(error);
             return [];
         });
@@ -22,6 +25,8 @@ export function fetchCatByBreed(breedId) {
         .catch(error => {
             refs.error.hidden = false;
             refs.loader.hidden = true;
+            refs.breedSelect.hidden = true;
+          refs.catInfoCard.innerHTML = "";
             console.error(error);
             return null;
         });
