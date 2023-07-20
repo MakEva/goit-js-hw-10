@@ -38,23 +38,26 @@ function onSelectedBreedId(breed) {
     refs.loader.hidden = false;
     fetchCatByBreed(selectedBreedId)
         .then(cat => {
-            const catCard = cat.map((catItem) =>
-                `<img src="${catItem.url}" width="600">
+            if (!cat) {
+                return;
+            } else {
+                const catCard = cat.map((catItem) =>
+                    `<img src="${catItem.url}" width="600">
                 <div class="description">
                 <b class="name">${catItem.breeds[0].name}</b>
                 <p>${catItem.breeds[0].description}</p>
                 <p><b>Temperament:</b> ${catItem.breeds[0].temperament}</p>
                 </div>`
-            ).join("");
-            refs.catInfoCard.innerHTML = catCard;
-            refs.loader.hidden = true;
-            refs.breedSelect.hidden = false;
-            refs.error.hidden = true;
+                ).join("");
+                refs.catInfoCard.innerHTML = catCard;
+                refs.loader.hidden = true;
+                refs.breedSelect.hidden = false;
+                refs.error.hidden = true;
+            }
         })
         .catch(error => {
             console.error(error);
             refs.error.hidden = false;
             refs.loader.hidden = true;
         });
-   
-};
+   };
